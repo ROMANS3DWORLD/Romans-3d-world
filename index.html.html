@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Romans 3D World</title>
+  <meta name="description" content="Romans 3D World offers colourful 3D printed figures, flexi figures, fidget toys, party bag fillers, classroom rewards, and stationery accessories for children." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
+      background: #fff7ed;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      padding: 16px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 247, 237, 0.97);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 4px solid #f9a8d4;
+    }
+
+    .logo {
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #7c3aed;
+    }
+
+    nav a {
+      margin-left: 18px;
+      color: #475569;
+      font-weight: 900;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { color: #ec4899; }
+
+    .hero {
+      padding: 70px 8%;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 46px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(56,189,248,0.38), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(244,114,182,0.38), transparent 30%),
+        radial-gradient(circle at 75% 85%, rgba(132,204,22,0.28), transparent 28%),
+        #fff7ed;
+    }
+
+    .shop-badge {
+      display: inline-block;
+      background: #86efac;
+      border: 3px solid #1e293b;
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      box-shadow: 0 5px 0 #1e293b;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.03;
+      margin-bottom: 20px;
+      color: #7c3aed;
+    }
+
+    .hero p {
+      color: #334155;
+      font-size: 1.15rem;
+      margin-bottom: 28px;
+      max-width: 680px;
+      font-weight: 800;
+    }
+
+    .buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: 0.2s ease;
+      border: 3px solid #1e293b;
+      box-shadow: 0 6px 0 #1e293b;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: #facc15; color: #1e293b; }
+    .btn-primary:hover { transform: translateY(-2px); background: #fde047; }
+    .btn-secondary { background: #38bdf8; color: #1e293b; }
+
+    .hero-card {
+      background: #ffffff;
+      border: 4px solid #1e293b;
+      border-radius: 34px;
+      padding: 26px;
+      box-shadow: 12px 12px 0 #f9a8d4;
+    }
+
+    .toy-window {
+      min-height: 330px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #bae6fd, #fbcfe8, #fef08a, #bbf7d0);
+      border: 4px solid #1e293b;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .toy-bubble {
+      background: #fff;
+      border: 3px solid #1e293b;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.3rem;
+      box-shadow: 5px 5px 0 rgba(30,41,59,0.8);
+    }
+
+    section { padding: 68px 8%; }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 14px;
+      color: #db2777;
+    }
+
+    .section-subtitle {
+      color: #475569;
+      margin-bottom: 34px;
+      max-width: 780px;
+      font-weight: 800;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card, .product-card {
+      background: #ffffff;
+      border: 4px solid #1e293b;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 8px 8px 0 #bae6fd;
+    }
+
+    .card h3, .product-card h3 {
+      color: #7c3aed;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .card p, .card li, .product-card p {
+      color: #334155;
+      font-weight: 750;
+    }
+
+    .card ul { padding-left: 18px; }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .category {
+      background: #ffffff;
+      border: 4px solid #1e293b;
+      border-radius: 26px;
+      text-align: center;
+      padding: 24px 16px;
+      box-shadow: 7px 7px 0 #fef08a;
+      font-weight: 900;
+    }
+
+    .category span { display: block; font-size: 3rem; margin-bottom: 8px; }
+
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 8px 8px 0 #86efac;
+    }
+
+    .product-image {
+      height: 180px;
+      border-radius: 24px;
+      border: 4px solid #1e293b;
+      background: linear-gradient(135deg, #fbcfe8, #bae6fd, #fef08a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #facc15;
+      border: 3px solid #1e293b;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.9rem;
+      color: #db2777;
+      font-weight: 900;
+      margin: 10px 0;
+    }
+
+    .pricing { background: #e0f2fe; }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    form { display: grid; gap: 14px; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: 3px solid #1e293b;
+      background: #fff7ed;
+      color: #1e293b;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    .qr-placeholder {
+      background: #ffffff;
+      color: #1e293b;
+      border: 4px solid #1e293b;
+      border-radius: 24px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 8px 8px 0 #facc15;
+    }
+
+    .qr-box {
+      width: 190px;
+      height: 190px;
+      background: repeating-linear-gradient(45deg, #111 0 8px, #fff 8px 16px);
+      margin: 18px auto;
+      border: 12px solid white;
+    }
+
+    footer {
+      padding: 28px 8%;
+      text-align: center;
+      color: #475569;
+      font-weight: 900;
+      background: #fff7ed;
+      border-top: 4px solid #f9a8d4;
+    }
+
+    @media (max-width: 850px) {
+      header { flex-direction: column; gap: 14px; }
+      nav a { margin: 0 8px; }
+      .hero, .contact-box { grid-template-columns: 1fr; }
+      .grid, .category-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" style="display:flex;align-items:center;gap:12px;"><div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#38bdf8,#f9a8d4,#facc15);display:flex;align-items:center;justify-content:center;font-size:2rem;border:3px solid #1e293b;">🌍</div> <span>Romans 3D World</span></div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="shop-badge">🎁 Pocket-Money Toy Store</div>
+        <h1>Fun 3D Printed Toys, Fidgets & Desk Buddies!</h1>
+        <p>Welcome to Romans 3D World — a colourful place for flexi dragons, mini figures, fidget toys, bag charms, pencil toppers, and collectible little treasures children will love.</p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#products">Shop Fun Picks</a>
+          <a class="btn btn-secondary" href="#contact">Ask About an Order</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="toy-window">
+          <div class="toy-bubble">🐉</div>
+          <div class="toy-bubble">🦖</div>
+          <div class="toy-bubble">🌀</div>
+          <div class="toy-bubble">✏️</div>
+        </div>
+        <h2>New colourful prints added regularly</h2>
+        <p>Great for rewards, party bags, school fairs, birthday treats, and pocket-money collections.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-subtitle">Easy sections make the website feel more like a real toy shop and help families quickly find fun items.</p>
+      <div class="category-row">
+        <div class="category"><span>🐉</span>Flexi Creatures</div>
+        <div class="category"><span>🧸</span>Mini Figures</div>
+        <div class="category"><span>🌀</span>Fidgets</div>
+        <div class="category"><span>✏️</span>Stationery Fun</div>
+      </div>
+    </section>
+
+    <section id="products">
+      <h2 class="section-title">Popular Pocket-Money Picks</h2>
+      <p class="section-subtitle">These product cards are examples. You can swap the emojis for real photos of your prints later.</p>
+      <div class="grid">
+        <div class="product-card">
+          <div class="product-image">🐉</div>
+          <span class="tag">Best Seller</span>
+          <h3>Flexi Dragon</h3>
+          <p>A bendy, colourful dragon that wiggles, poses, and looks brilliant on a desk or shelf.</p>
+          <div class="price">From £5</div>
+          <a class="btn btn-primary" href="#contact">Ask to Order</a>
+        </div>
+        <div class="product-card">
+          <div class="product-image">🌀</div>
+          <span class="tag">Pocket-Money Pick</span>
+          <h3>Mystery Fidget</h3>
+          <p>A fun surprise fidget toy for busy hands, reward boxes, party bags, and little treats.</p>
+          <div class="price">From £2</div>
+          <a class="btn btn-primary" href="#contact">Ask to Order</a>
+        </div>
+        <div class="product-card">
+          <div class="product-image">✏️</div>
+          <span class="tag">School Favourite</span>
+          <h3>Pencil Toppers</h3>
+          <p>Cute pencil toppers, name tags, bookmarks, and desk accessories for children.</p>
+          <div class="price">From £2</div>
+          <a class="btn btn-primary" href="#contact">Ask to Order</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <h2 class="section-title">Simple Toy Store Prices</h2>
+      <p class="section-subtitle">Keep prices easy to understand with pocket-money options and custom bundle quotes.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Small Treats</h3>
+          <div class="price">From £2</div>
+          <ul>
+            <li>Pencil toppers</li>
+            <li>Mini figures</li>
+            <li>Bag charms</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Flexi & Fidget Toys</h3>
+          <div class="price">From £5</div>
+          <ul>
+            <li>Flexi dragons</li>
+            <li>Fidget toys</li>
+            <li>Desk buddies</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Bundles & Parties</h3>
+          <div class="price">Quote</div>
+          <ul>
+            <li>Party bag sets</li>
+            <li>School reward boxes</li>
+            <li>Personalised gifts</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Ask About an Order</h2>
+      <p class="section-subtitle">Parents, carers, schools, and event organisers can use this form to ask about figures, flexi toys, fidgets, party bag fillers, stationery accessories, and personalised children’s items.</p>
+      <div class="contact-box">
+        <div class="card">
+          <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <select name="service">
+              <option>Figures or characters</option>
+              <option>Flexi figure</option>
+              <option>Fidget toy</option>
+              <option>Stationery accessory</option>
+              <option>Party bag or school order</option>
+              <option>Other child-friendly item</option>
+            </select>
+            <textarea name="message" placeholder="Tell us what you would like. Include item type, colour, quantity, name/personalisation, and when you need it." required></textarea>
+            <button class="btn btn-primary" type="submit">Send Request</button>
+          </form>
+        </div>
+        <div class="qr-placeholder">
+          <h3>Your Website QR Code</h3>
+          <div class="qr-box"></div>
+          <p>Once your site is live, make a free QR code from your website link and replace this box with the QR image.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section>
+      <h2 class="section-title">Why Children Love Them</h2>
+      <p class="section-subtitle">Small, colourful, collectible items make great rewards, birthday treats, school fair products, and fun surprises.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>🎨 Pick Your Colour</h3>
+          <p>Many items can be made in bright colours, rainbow styles, or favourite colour combinations.</p>
+        </div>
+        <div class="card">
+          <h3>🎒 Easy to Collect</h3>
+          <p>Mini figures, charms, fidgets, and desk buddies are small enough to collect and display.</p>
+        </div>
+        <div class="card">
+          <h3>🎁 Great for Gifts</h3>
+          <p>Perfect for party bags, reward boxes, pocket-money treats, and school fair tables.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Romans Mystery Box Club 📦</h2>
+      <p class="section-subtitle">A monthly subscription-style mystery box makes the website feel like a real toy brand and encourages repeat customers.</p>
+      <div class="grid">
+        <div class="product-card">
+          <div class="product-image">📦</div>
+          <span class="tag">Monthly Surprise</span>
+          <h3>Mini Mystery Box</h3>
+          <p>A fun pocket-money surprise with mini figures, fidgets, charms, and stationery bits.</p>
+          <div class="price">£4.99</div>
+          <a class="btn btn-primary" href="#contact">Join the Club</a>
+        </div>
+        <div class="product-card">
+          <div class="product-image">🐉</div>
+          <span class="tag">Best Value</span>
+          <h3>Flexi Creature Box</h3>
+          <p>Includes flexi dragons, collectible creatures, mystery colours, and bonus little extras.</p>
+          <div class="price">£9.99</div>
+          <a class="btn btn-primary" href="#contact">Join the Club</a>
+        </div>
+        <div class="product-card">
+          <div class="product-image">🎁</div>
+          <span class="tag">Collector Favourite</span>
+          <h3>Ultimate Surprise Box</h3>
+          <p>A bigger monthly bundle with exclusive figures, stationery accessories, and seasonal specials.</p>
+          <div class="price">£14.99</div>
+          <a class="btn btn-primary" href="#contact">Join the Club</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <h2 class="section-title">Fun Social Post Ideas</h2>
+      <p class="section-subtitle">Use these child-friendly marketing ideas for TikTok, Facebook, Instagram, school fairs, and local selling groups.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>✨ New Drop Alert!</h3>
+          <p>“New flexi dragons just landed at Romans 3D World 🐉 Which colour would you choose?”</p>
+        </div>
+        <div class="card">
+          <h3>🎁 Pocket-Money Specials</h3>
+          <p>“Fun little 3D printed surprises from just £2 — perfect for party bags, rewards, and collectors!”</p>
+        </div>
+        <div class="card">
+          <h3>🦖 Collect Them All</h3>
+          <p>“Dinosaurs, dragons, desk buddies, and mystery fidgets available now. Which one is your favourite?”</p>
+        </div>
+      </div>
+    </section>
+
+  <footer>
+    <p>© 2026 Romans 3D World. Custom 3D printing services.</p>
+  </footer>
+</body>
+</html>
